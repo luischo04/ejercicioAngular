@@ -1,0 +1,62 @@
+<div class="container">
+<mat-card [class.mat-elevation-z8]="true">
+    <mat-card-content>
+    <form [formGroup]="empleadoForm" (ngSubmit)="empleadoForm.valid && onGuardarPersona()">
+    <mat-form-field class="full-width">
+        <mat-label>Nombre completo: </mat-label>
+        <input formControlName="nombreCompleto" matInput required>
+        <mat-error>
+            {{ getErrorMessage('nombreCompleto') }}
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-label>Fecha de nacimiento: </mat-label>
+        <input matInput [matDatepicker]="fecha" formControlName="fechaNacimiento" required>
+        <mat-datepicker-toggle matSuffix [for]="fecha"></mat-datepicker-toggle>
+        <mat-datepicker #fecha></mat-datepicker>
+        <mat-error>
+            {{ getErrorMessage('fechaNacimiento') }}
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-label>Edad: </mat-label>
+        <input type="number" formControlName="edad" matInput required>
+        <mat-error>
+            {{ getErrorMessage('edad') }}
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-label>Cargo: </mat-label>
+        <mat-select formControlName="cargo">
+            <mat-option value="1">Jefe de departamento</mat-option>
+            <mat-option value="2">Vicepresidente</mat-option>
+            <mat-option value="3">Ingeniero</mat-option>
+            <mat-option value="4">Obrero</mat-option>
+        </mat-select>
+        <mat-error>
+            {{ getErrorMessage('cargo') }}
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-label>Estatus: </mat-label>
+        <mat-select required formControlName="estatus">
+            <mat-option value="1">Activo</mat-option>
+            <mat-option value="2">Inactivo</mat-option>
+        </mat-select>
+        <mat-error>
+            {{ getErrorMessage('estatus') }}
+        </mat-error>
+    </mat-form-field>
+    <button type="submit" [disabled]="empleadoForm.invalid" mat-raised-button color="primary">
+        <mat-icon>save</mat-icon>
+        Guardar
+    </button>
+</form>
+</mat-card-content>
+</mat-card>
+</div>
+    
